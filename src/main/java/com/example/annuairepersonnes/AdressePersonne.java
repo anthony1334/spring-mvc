@@ -12,6 +12,11 @@ public class AdressePersonne {
 		return personne;
 	}
 
+	
+	/**
+	 * 
+	 * @return
+	 */
 	public Adresse getAdresse() {
 		Adresse adresse = new Adresse();
 		adresse.setNumero(numero);
