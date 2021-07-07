@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Hello Thymeleaf!</title>
+</head>
+
+<body>
+	<style>
+		td {
+			border: 1px solid black;
+		}
+
+		h1 {
+			color: blue;
+		}
+	</style>
+	<h1>Personne de l'annuaire</h1>
+	<p th:text="'Hello, ' + ${name} + '!'" />
+	<table>
+		<tr>
+			<th>numero</th>
+			<th>rue</th>
+			<th>code postal</th>
+			<th>ville</th>
+			<th>personne</th>
+
+		</tr>
+		<tr th:each=" pers:${personne}">
+			<td th:text="${pers.numero}"></td>
+			<td th:text="${pers.rue}"></td>
+			<td th:text="${pers.codePostal}"></td>
+			<td th:text="${pers.ville}"></td>
+			<td th:text="${pers.personne}"></td>
+		</tr>
+	</table>
+
+	<form th:action="@{/personne}" action="#" th:object="${newPersonne}" method="post">
+		<input type="text" placeholder="entrer votre numero" th:field="*{numero}" autocomplete="off" />
+		<span class="field-error" th:if="${#fields.hasErrors('numero')}" th:errors="*{numero}">Name Error</span>
+		
+<input type="text" placeholder="entrer votre rue"  th:field="*{rue}" autocomplete="off"/>
+<span class="field-error" th:if="${#fields.hasErrors('rue')}" th:errors="*{rue}">Name Error</span>
+
+<input type="text" placeholder="entrer votre codePostal"  th:field="*{codePostal}" autocomplete="off"/>
+<span class="field-error" th:if="${#fields.hasErrors('codePostal')}" th:errors="*{codePostal}">Name Error</span>
+
+<input type="text" placeholder="entrer votre ville"  th:field="*{ville}" autocomplete="off"/>
+<span class="field-error" th:if="${#fields.hasErrors('ville')}" th:errors="*{ville}">Name Error</span>
+
+<input type="text" placeholder="entrer votre nom"  th:field="*{nom}" autocomplete="off"/>
+<span class="field-error" th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}">Name Error</span>
+
+<input type="text" placeholder="entrer votre prenom"  th:field="*{prenom}" autocomplete="off"/>
+<span class="field-error" th:if="${#fields.hasErrors('prenom')}" th:errors="*{prenom}">Name Error</span>
+<button type ="submit">Envoyer </button>
+
+</form>
+</body>
+</html>
